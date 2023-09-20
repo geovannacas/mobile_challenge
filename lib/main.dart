@@ -39,29 +39,44 @@ class HomePage extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Obx(() => Text(
-              'Contagem: ${controller.contador}',
-              style: TextStyle(fontSize: 24),
-            )),
+            Container(
+              width: 200,
+              height: 100,
+              color: Colors.deepPurple,
+              child: Center(
+                child: Text(
+                  'Contador',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+            ),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: (){
-                controller.incrementarContador();
-              }, 
-              child: Text('Incrementar'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    controller.incrementarContador();
+                  },
+                  child: Text('Incrementar'),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    controller.resetarContador();
+                  },
+                  child: Text('Resetar Contador'),
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                controller.resetarContador(); // Vamos criar esta função em seguida.
-              },
-              child: Text('Resetar Contador'),
-            ),
+            SizedBox(height: 20),
+            Obx(() => Text(
+                  'Contagem: ${controller.contador}',
+                  style: TextStyle(fontSize: 24, color: Colors.deepPurple),
+                )),
           ],
         ),
       ),
     );
   }
 }
-
-
-
